@@ -10,9 +10,9 @@ st.title("Modelo de Producción: Stacking Model")
 st.write("Valores requeridos")
 
 #Datos
-AñosEstudio=st.number_input("Año de Estudio",min_value=0, step=0.4)
-HorasSemanales=st.number_input("Horas Semanales",min_value=0, step=0.4)
-NumTrabajadores=st.number_input("Numero de Trabajadores",min_value=0, step=0.4)
+AñosEstudio=st.number_input("Año de Estudio",min_value=0.0, step=0.1)
+HorasSemanales=st.number_input("Horas Semanales",min_value=0.0, step=0.1)
+NumTrabajadores=st.number_input("Numero de Trabajadores",min_value=0.0, step=0.1)
 
 #Botón para predecir
 if st.button("Predecir"):
