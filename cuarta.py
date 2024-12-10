@@ -8,15 +8,7 @@ app = FastAPI()
 @app.on_event("startup")
 def load_model():
     global model
-    model = pickle.load(open("Stacking.pkl", "rb"))
-
-@app.get("/")
-def index():
-    return {
-        "msg" : "¡Bienvenidos a la plataforma de Machine Learning!",
-        "org": "MLAAS",
-        "api-documentation": "https://trabajo-informatica-hmwexyjfxucjubtrxjp5v4.streamlit.app/",
-    }
+    model = pickle.load(open("Stacking_model.pkl", "rb"))
 
 @app.post("/predict")
 def get_home_price(data: y_pred_stacking):
