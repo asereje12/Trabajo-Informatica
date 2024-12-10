@@ -6,3 +6,4 @@ streamlit
 fastapi
 scikit-learn==1.5.2
 pydantic
+uvicorn
