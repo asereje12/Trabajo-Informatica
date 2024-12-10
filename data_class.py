@@ -118,4 +118,4 @@ stacking_model = StackingRegressor(
 ).fit(X_train, y_train)
 
 y_pred_stacking = stacking_model.predict(X_test)
-y_pred_stacking
+
