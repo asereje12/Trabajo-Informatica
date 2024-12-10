@@ -1,6 +1,6 @@
 from typing import Optional
 from fastapi import FastAPI
-from data_class import Datos
+from data_class import data_test_f
 import pickle
 
 app = FastAPI()
@@ -19,7 +19,7 @@ def index():
     }
 
 @app.post("/predict")
-def get_home_price(data: Datos):
+def get_home_price(data: data_test_f):
     received = data.dict()
     ingreso_attr=[[
         received['AñosEstudio'],
