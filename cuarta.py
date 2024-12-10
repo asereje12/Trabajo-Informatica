@@ -1,14 +1,17 @@
 from typing import Optional
 from fastapi import FastAPI
-from data_class import data_test_f
+from pydantic import BaseModel
 import pickle
+
+class IngresoData(BaseModel):  # Usamos 'IngresoData' en lugar de 'Datos'
+    AñosEstudio: float
+    HorasSemanales: float
+    NumTrabajadores: int
 
 app = FastAPI()
 
-@app.on_event("startup")
-def load_model():
-    global model
-    model = pickle.load(open("Stacking_model.pkl", "rb"))
+# Cargar el modelo de manera simple al iniciar la aplicación
+model = pickle.load(open("Stacking.pkl", "rb"))
 
 @app.get("/")
 def index():
@@ -19,12 +22,12 @@ def index():
     }
 
 @app.post("/predict")
-def get_home_price(data: data_test_f):
+def get_home_price(data: IngresoData):
     received = data.dict()
-    ingreso_attr=[[
+    ingreso_attr=[[ 
         received['AñosEstudio'],
         received['HorasSemanales'],
         received['NumTrabajadores'],
     ]]
-    ingreso=model.predict(ingreso_attr).tolist()[0]
-    return{'data':received, 'ingreso':ingreso}
+    ingreso = model.predict(ingreso_attr).tolist()[0]
+    return {'data': received, 'ingreso': ingreso}
