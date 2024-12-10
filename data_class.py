@@ -42,7 +42,7 @@ test = sms.het_breuschpagan(modelo.resid, modelo.model.exog)
 
 #Error del modelo
 #A menor valor, el modelo es más adecuado
-modelo.mse_resid
+#modelo.mse_resid
 
 #Intervalos de confianza para los coeficientes
 intervalos_ci = modelo.conf_int(alpha=0.05)
