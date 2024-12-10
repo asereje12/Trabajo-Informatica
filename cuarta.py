@@ -26,3 +26,4 @@ def get_home_price(data: IngresoData):
     ]]
     ingreso=model.predict(ingreso_attr).tolist()[0]
     return{'data':received, 'ingreso':ingreso}
+    st.header('2. Predicción')
