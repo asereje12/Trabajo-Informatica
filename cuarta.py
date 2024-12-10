@@ -11,7 +11,7 @@ class IngresoData(BaseModel):  # Usamos 'IngresoData' en lugar de 'Datos'
 app = FastAPI()
 
 # Cargar el modelo de manera simple al iniciar la aplicación
-model = pickle.load(open("Stacking.pkl", "rb"))
+model = pickle.load(open("Stacking.json", "rb"))
 
 @app.get("/")
 def index():
