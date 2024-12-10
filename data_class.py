@@ -38,7 +38,7 @@ modelo = smf.ols('IngresoMensual ~ AñosEstudio + HorasSemanales + NumTrabajador
 
 nombres = ['estadística del multiplicador de Lagrange', 'valor p','valor f', 'valor p f']
 test = sms.het_breuschpagan(modelo.resid, modelo.model.exog)
-[nombres[1],test[1]]
+#[nombres[1],test[1]]
 
 #Error del modelo
 #A menor valor, el modelo es más adecuado
