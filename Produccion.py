@@ -6,8 +6,8 @@ import pandas as pd
 Stacking=joblib.load("Stacking.joblib")
 
 #Aplicacion
-st.title("Modelo de Producción: Stacking Model")
-st.write("Valores requeridos")
+st.title("Stacking Model: Ingreso Estimado")
+st.write("Ingrese los siguientes valores")
 
 #Datos
 AñosEstudio=st.number_input("Año de Estudio",min_value=0.0, step=1.0)
