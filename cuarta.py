@@ -1,34 +1,30 @@
 from typing import Optional
 from fastapi import FastAPI
-from pydantic import BaseModel
+from data_class import y_pred_stacking
 import pickle
-
-class IngresoData(BaseModel):  # Usamos 'IngresoData' en lugar de 'Datos'
-    AñosEstudio: float
-    HorasSemanales: float
-    NumTrabajadores: int
 
 app = FastAPI()
 
-# Cargar el modelo de manera simple al iniciar la aplicación
-model = pickle.load(open("Stacking.json", "rb"))
+@app.on_event("startup")
+def load_model():
+    global model
+    model = pickle.load(open("Stacking.pkl", "rb"))
 
 @app.get("/")
 def index():
     return {
         "msg" : "¡Bienvenidos a la plataforma de Machine Learning!",
         "org": "MLAAS",
-        "api-documentation": "https://trabajo-informatica-lstgptqe9drmgwbjj2lr8g.streamlit.app/",
+        "api-documentation": "https://trabajo-informatica-hmwexyjfxucjubtrxjp5v4.streamlit.app/",
     }
 
 @app.post("/predict")
-def get_home_price(data: IngresoData):
+def get_home_price(data: y_pred_stacking):
     received = data.dict()
-    ingreso_attr=[[ 
+    ingreso_attr=[[
         received['AñosEstudio'],
         received['HorasSemanales'],
         received['NumTrabajadores'],
     ]]
-    ingreso = model.predict(ingreso_attr).tolist()[0]
-    return {'data': received, 'ingreso': ingreso}
-    st.write("El valor es: ")
+    ingreso=model.predict(ingreso_attr).tolist()[0]
+    return{'data':received, 'ingreso':ingreso}
