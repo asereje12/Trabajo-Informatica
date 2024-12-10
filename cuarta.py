@@ -15,7 +15,7 @@ def index():
     return {
         "msg" : "¡Bienvenidos a la plataforma de Machine Learning!",
         "org": "MLAAS",
-        "api-documentation": "https://trabajofinal.sytes.net",
+        "api-documentation": "https://trabajo-informatica-hmwexyjfxucjubtrxjp5v4.streamlit.app/",
     }
 
 @app.post("/predict")
