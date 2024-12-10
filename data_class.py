@@ -15,8 +15,6 @@ data = pd.read_csv('Encuesta Permanente de Empleo Nacional.csv', sep=",", encodi
 # Filtrar filas sin valores faltantes
 data = data.dropna()
 
-# Mostrar el resultado
-data
 # Función para eliminar outliers utilizando el rango intercuartílico
 def remove_outliers_iqr(df, columns):
     for column in columns:
@@ -42,9 +40,6 @@ nombres = ['estadística del multiplicador de Lagrange', 'valor p','valor f', 'v
 test = sms.het_breuschpagan(modelo.resid, modelo.model.exog)
 [nombres[1],test[1]]
 
-#Coeficientes del modelo
-modelo.params
-
 #Error del modelo
 #A menor valor, el modelo es más adecuado
 modelo.mse_resid
@@ -52,7 +47,6 @@ modelo.mse_resid
 #Intervalos de confianza para los coeficientes
 intervalos_ci = modelo.conf_int(alpha=0.05)
 intervalos_ci.columns = ['2.5%', '97.5%']
-intervalos_ci
 
 from sklearn.model_selection import train_test_split
 
@@ -60,7 +54,6 @@ from sklearn.model_selection import train_test_split
 data_train, data_test = train_test_split(data, test_size=0.7, random_state=42)
 
 data_test_Ing_pred = modelo.predict(exog = data_test)
-data_test_Ing_pred
 
 data_test_f = pd.concat([pd.DataFrame(data_test),pd.DataFrame(data_test_Ing_pred)],axis=1)
 data_test_f.columns = ['IngresoMensual','AñosEstudio','HorasSemanales','NumTrabajadores','Ing_Pred']
