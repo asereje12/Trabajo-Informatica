@@ -119,4 +119,4 @@ stacking_model = StackingRegressor(
 
 y_pred_stacking = stacking_model.predict(X_test)
 
-st.header('2. Predicción')
+st.header('2.Predicción')
