@@ -19,7 +19,7 @@ def index():
     }
 
 @app.post("/predict")
-def get_home_price(data: House):
+def get_home_price(data: data_class):
     received = data.dict()
     ingreso_attr=[[
         received['AñosEstudio'],
