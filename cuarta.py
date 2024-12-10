@@ -8,7 +8,7 @@ app = FastAPI()
 @app.on_event("startup")
 def load_model():
     global model
-    model = pickle.load(open("Stacking_model.pkl", "rb"))
+    model = pickle.load(open("Stacking.pkl", "rb"))
 
 @app.post("/predict")
 def get_home_price(data: y_pred_stacking):
