@@ -9,9 +9,15 @@ app = FastAPI()
 def load_model():
     global model
     model = pickle.load(open("Stacking.pkl", "rb"))
-
+    
+# Definir la clase para los datos de entrada usando Pydantic
+class IngresoData(BaseModel):
+    AñosEstudio: float
+    HorasSemanales: float
+    NumTrabajadores: int
+    
 @app.post("/predict")
-def get_home_price(data: y_pred_stacking):
+def get_home_price(data: IngresoData):
     received = data.dict()
     ingreso_attr=[[
         received['AñosEstudio'],
