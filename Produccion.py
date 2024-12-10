@@ -19,6 +19,6 @@ if st.button("Predecir"):
   try:
     input=pd.DataFrame([[AñosEstudio,HorasSemanales,NumTrabajadores]],columns=["AñosEstudio: Años de Estudio", "HorasSemanales: Horas Semanales", "NumTrabajadores:N de trabajadores"])
     predict= Stacking.predict(input)
-    st.success(f"Prediccion: {predict[0]}")
+    st.success(f"Ingreso Estimado: {predict[0]}")
   except Exception as e:
     st.error(f"Error: {e}")
